@@ -19,7 +19,6 @@ document.addEventListener("DOMContentLoaded", function () {
         messageContainer.appendChild(message);
         chatMessages.appendChild(messageContainer);
 
-        // Scroll to latest message
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 
@@ -30,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
         appendMessage("user", userMessage);
         messageInput.value = "";
 
-        fetch("http://127.0.0.1:8000/chat", {
+        fetch("/chat", {  // <-- Changed to relative path for deployment
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ message: userMessage })
